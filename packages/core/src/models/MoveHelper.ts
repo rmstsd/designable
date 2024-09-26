@@ -287,6 +287,7 @@ export class MoveHelper {
   dragMove(props: IMoveHelperDragMoveProps) {
     const { point, touchNode } = props
     if (!this.dragging) return
+
     if (this.outline.isPointInViewport(point, false)) {
       this.activeViewport = this.outline
       this.touchNode = touchNode
@@ -305,6 +306,7 @@ export class MoveHelper {
       )
       this.viewportClosestDirection = this.outlineClosestDirection
     } else {
+      // ✔
       this.viewportClosestDirection = this.calcClosestPosition(
         point,
         this.viewport
@@ -322,6 +324,7 @@ export class MoveHelper {
       )
     }
     if (this.viewport.mounted) {
+      // ✔
       this.viewportClosestRect = this.calcClosestRect(
         this.viewport,
         this.viewportClosestDirection

@@ -84,6 +84,7 @@ export class DragDropDriver extends EventDriver<Engine> {
   }
 
   onStartDrag = (e: MouseEvent | DragEvent) => {
+    console.log('start drag')
     if (GlobalState.dragging) return
     GlobalState.startEvent = GlobalState.startEvent || e
     this.batchAddEventListener('dragover', this.onMouseMove)

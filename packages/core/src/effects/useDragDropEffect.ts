@@ -15,6 +15,7 @@ import { Point } from '@designable/shared'
 
 export const useDragDropEffect = (engine: Engine) => {
   engine.subscribeTo(DragStartEvent, (event) => {
+    console.log(event)
     if (engine.cursor.type !== CursorType.Normal) return
     const target = event.data.target as HTMLElement
     const el = target?.closest(`
@@ -52,6 +53,7 @@ export const useDragDropEffect = (engine: Engine) => {
         }
       } else if (sourceId) {
         const sourceNode = engine.findNodeById(sourceId)
+        console.log('sourceNode', sourceNode)
         if (sourceNode) {
           moveHelper.dragStart({ dragNodes: [sourceNode] })
         }
