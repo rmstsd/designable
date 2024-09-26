@@ -52,5 +52,9 @@ export default {
     host: '127.0.0.1',
     open: true,
     port: PORT,
+    client: {
+      progress: true,
+      overlay: false,
+    },
   },
 }

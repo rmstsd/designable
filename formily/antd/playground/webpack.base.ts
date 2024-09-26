@@ -44,10 +44,10 @@ export default {
     alias: getWorkspaceAlias(),
   },
   externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+    // react: 'React',
+    // 'react-dom': 'ReactDOM',
     moment: 'moment',
-    antd: 'antd',
+    // antd: 'antd',
   },
   module: {
     rules: [
