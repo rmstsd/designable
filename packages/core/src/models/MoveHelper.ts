@@ -13,22 +13,23 @@ import { DragNodeEvent, DropNodeEvent } from '../events'
 import { Viewport } from './Viewport'
 import { CursorDragType } from './Cursor'
 
+// FORBID 禁止
 export enum ClosestPosition {
-  Before = 'BEFORE',
-  ForbidBefore = 'FORBID_BEFORE',
+  Before = 'Before',
+  ForbidBefore = 'ForbidBefore',
   After = 'After',
-  ForbidAfter = 'FORBID_AFTER',
-  Upper = 'UPPER',
-  ForbidUpper = 'FORBID_UPPER',
-  Under = 'UNDER',
-  ForbidUnder = 'FORBID_UNDER',
-  Inner = 'INNER',
-  ForbidInner = 'FORBID_INNER',
-  InnerAfter = 'INNER_AFTER',
-  ForbidInnerAfter = 'FORBID_INNER_AFTER',
-  InnerBefore = 'INNER_BEFORE',
-  ForbidInnerBefore = 'FORBID_INNER_BEFORE',
-  Forbid = 'FORBID',
+  ForbidAfter = 'ForbidAfter',
+  Upper = 'Upper',
+  ForbidUpper = 'ForbidUpper',
+  Under = 'Under',
+  ForbidUnder = 'ForbidUnder',
+  Inner = 'Inner',
+  ForbidInner = 'ForbidInner',
+  InnerAfter = 'InnerAfter',
+  ForbidInnerAfter = 'ForbidInnerAfter',
+  InnerBefore = 'InnerBefore',
+  ForbidInnerBefore = 'ForbidInnerBefore',
+  Forbid = 'Forbid',
 }
 
 export interface IMoveHelperProps {
@@ -54,7 +55,7 @@ export class MoveHelper {
 
   dragNodes: TreeNode[] = []
 
-  touchNode: TreeNode = null
+  touchNode: TreeNode = null // 鼠标位置对应的节点
 
   closestNode: TreeNode = null
 
@@ -293,9 +294,12 @@ export class MoveHelper {
       this.touchNode = touchNode
       this.closestNode = this.calcClosestNode(point, this.outline)
     } else if (this.viewport.isPointInViewport(point, false)) {
+      // ✔ 在搭建区拖动
+      console.log('a')
       this.activeViewport = this.viewport
       this.touchNode = touchNode
       this.closestNode = this.calcClosestNode(point, this.viewport)
+      console.log('closestNode', this.closestNode.getElement())
     }
     if (!this.activeViewport) return
 
@@ -306,7 +310,7 @@ export class MoveHelper {
       )
       this.viewportClosestDirection = this.outlineClosestDirection
     } else {
-      // ✔
+      // ✔ 在搭建区拖动
       this.viewportClosestDirection = this.calcClosestPosition(
         point,
         this.viewport
