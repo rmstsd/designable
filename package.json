@@ -10,6 +10,7 @@
     "examples/*"
   ],
   "scripts": {
+    "start:site-emp": "yarn workspace @designable/formily-antd start",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "build": "rimraf -rf packages/*/{lib,esm} && lerna run build",
