@@ -117,6 +117,7 @@ export class MoveHelper {
     if (!closestRect) {
       return
     }
+    // console.log('isInline', isInline) // 是否横着放
     const isAfter = isNearAfter(
       point,
       closestRect,
@@ -127,6 +128,7 @@ export class MoveHelper {
       if (node.parent?.allowSibling(this.dragNodes)) return node.parent
       return getValidParent(node.parent)
     }
+    console.log(closestNode, closestNode.getElement())
     if (isPointInRect(point, closestRect, viewport.moveSensitive)) {
       if (!closestNode.allowAppend(this.dragNodes)) {
         if (!closestNode.allowSibling(this.dragNodes)) {
@@ -206,6 +208,7 @@ export class MoveHelper {
       if (isInline) {
         return isAfter ? ClosestPosition.After : ClosestPosition.Before
       } else {
+        // console.log('ans', isAfter)
         return isAfter ? ClosestPosition.Under : ClosestPosition.Upper
       }
     }
@@ -222,6 +225,7 @@ export class MoveHelper {
         this.touchNode.eachChildren((node) => {
           const rect = viewport.getElementRectById(node.id)
           if (!rect) return
+          // console.log('viewport.moveSensitive', viewport.moveSensitive)
           const distance = isPointInRect(point, rect, viewport.moveSensitive)
             ? 0
             : calcDistanceOfPointToRect(point, rect)
@@ -295,11 +299,9 @@ export class MoveHelper {
       this.closestNode = this.calcClosestNode(point, this.outline)
     } else if (this.viewport.isPointInViewport(point, false)) {
       // ✔ 在搭建区拖动
-      console.log('a')
       this.activeViewport = this.viewport
       this.touchNode = touchNode
       this.closestNode = this.calcClosestNode(point, this.viewport)
-      console.log('closestNode', this.closestNode.getElement())
     }
     if (!this.activeViewport) return
 

@@ -50,7 +50,7 @@ export default {
   ],
   devServer: {
     host: '127.0.0.1',
-    open: true,
+    // open: true,
     port: PORT,
     client: {
       progress: true,

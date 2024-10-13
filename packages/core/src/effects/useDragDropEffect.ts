@@ -71,7 +71,6 @@ export const useDragDropEffect = (engine: Engine) => {
       *[${engine.props.nodeIdAttrName}],
       *[${engine.props.outlineNodeIdAttrName}]
     `)
-    console.log('el', el)
 
     const point = new Point(event.data.topClientX, event.data.topClientY)
     const nodeId = el?.getAttribute(engine.props.nodeIdAttrName)

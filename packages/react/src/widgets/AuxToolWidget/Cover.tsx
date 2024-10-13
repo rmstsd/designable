@@ -45,7 +45,6 @@ const CoverRect: React.FC<ICoverRectProps> = (props) => {
 }
 
 export const Cover = observer(() => {
-  console.log('render Cover')
   const viewportMoveHelper = useMoveHelper()
   const viewport = useViewport()
   const cursor = useCursor()
